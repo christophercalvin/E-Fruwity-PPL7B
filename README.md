@@ -11,6 +11,7 @@ php artisan db:seed  : mengisi isi dari tabel admin
 
 # How To Login
 Email : Admin@example.com
+<br>
 Password : admin
 
 # SELAMAT TESTER~
