@@ -29,10 +29,12 @@
                                         <td>
                                         <a href="{{ url('admin/products/'. $product->id .'/edit') }}" class="btn btn-warning btn-sm">Ubah Data</a>
                                             
+                                        @can('delete_products')
                                             {!! Form::open(['url' => 'admin/products/'. $product->id, 'class' => 'delete', 'style' => 'display:inline-block']) !!}
                                             {!! Form::hidden('_method', 'DELETE') !!}
-                                            {!! Form::submit('HAPUS', ['class' => 'btn btn-danger btn-sm']) !!}
+                                            <!--{!! Form::submit('HAPUS', ['class' => 'btn btn-danger btn-sm']) !!}-->
                                             {!! Form::close() !!}
+                                        @endcan
                                         </td>
                                     </tr>
                                 @empty
@@ -44,9 +46,11 @@
                         </table>
                         {{ $data_produks->links() }}
                     </div>
+                    @can('add_products')
                     <div class="card-footer text right">
                         <a href="{{ url('admin/products/create') }}" class="btn btn-primary">Tambah Barang Baru</a>
                     </div>
+                    @endcan
                 </div>
             </div>
         </div>

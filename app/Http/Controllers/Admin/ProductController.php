@@ -14,6 +14,8 @@ use Auth;
 use DB;
 use Session;
 
+use App\Authorizable;
+
 class ProductController extends Controller
 {
     /**
@@ -21,6 +23,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    use Authorizable;
     public function index()
     {
         $this->data['data_produks']=DataProduk::orderBy('id','ASC')->paginate(10);

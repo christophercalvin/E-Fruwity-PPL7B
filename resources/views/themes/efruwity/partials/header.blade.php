@@ -16,7 +16,7 @@
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#"><i class="fa fa-user s_color"></i> My Account</a></li>
+                            <li><a href="{{ url('profile') }}"><i class="fa fa-user s_color"></i> My Account</a></li>
                             <li><a href="#"><i class="fas fa-location-arrow"></i> Our location</a></li>
                             <li><a href="#"><i class="fas fa-headset"></i> Contact Us</a></li>
                         </ul>
@@ -30,7 +30,7 @@
                             
 							<button><a href="{{ url('register') }}">Register</a></button>
 						@else
-							<li style='color:white'>Hello: <a style='color:white' href="{{ url('users/profile') }}">{{ Auth::user()->first_name }}</a></li>
+							<li style='color:white'>Hello: <a style='color:white' href="{{ url('profile') }}">{{ Auth::user()->first_name }}</a></li>
 							<button class='btn btn-danger'><a style='color:white' href="{{ route('logout') }}"
 								onclick="event.preventDefault();
 											document.getElementById('logout-form').submit();">
@@ -104,7 +104,7 @@
 								<li><a href="{{url('produk') }}">Sidebar Shop</a></li>
                                 <li><a href="{{url('keranjang') }}">Cart</a></li>
                                 <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
+                                <li><a href="{{ url('profile') }}">My Account</a></li>
                                 <li><a href="wishlist.html">Wishlist</a></li>
                             </ul>
                         </li>

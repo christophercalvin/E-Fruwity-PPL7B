@@ -1,4 +1,15 @@
 <?php return array (
+  'darryldecode/cart' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Darryldecode\\Cart\\CartServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Cart' => 'Darryldecode\\Cart\\Facades\\CartFacade',
+    ),
+  ),
   'facade/ignition' => 
   array (
     'providers' => 
@@ -22,6 +33,17 @@
     'providers' => 
     array (
       0 => 'Fruitcake\\Cors\\CorsServiceProvider',
+    ),
+  ),
+  'laracasts/flash' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laracasts\\Flash\\FlashServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Flash' => 'Laracasts\\Flash\\Flash',
     ),
   ),
   'laravel/tinker' => 
@@ -62,6 +84,13 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    ),
+  ),
+  'spatie/laravel-permission' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
 );

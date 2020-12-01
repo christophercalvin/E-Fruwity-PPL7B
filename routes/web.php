@@ -13,9 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/produk', 'ProductController@index');
+Route::get('/produk/{id}', 'ProductController@show');
+
+Route::get('/keranjang', 'KeranjangController@index');
+Route::get('/keranjang/remove/{cartID}', 'KeranjangController@destroy');
+Route::post('/keranjang', 'KeranjangController@store');
+Route::post('/keranjang/update', 'KeranjangController@update');
+
+Route::get('orders/checkout', 'OrderController@checkout');
+Route::post('orders/checkout', 'OrderController@doCheckout');
+Route::post('orders/shipping-cost', 'OrderController@shippingCost');
+Route::post('orders/set-shipping', 'OrderController@setShipping');
+Route::get('orders/received/{id}', 'OrderController@received');
+Route::get('orders/cities', 'OrderController@cities');
+
+Route::get('profile', 'Auth\ProfileController@index');
+Route::post('profile', 'Auth\ProfileController@update');
 
 Route::group(
     ["namespace" => 'Admin', 'prefix' => 'admin', 'middleware'=>['auth']],
@@ -26,6 +41,11 @@ Route::group(
         Route::get('products/{productID}/add-image', 'ProductController@add_image');
         Route::post('products/images/{productID}/', 'ProductController@upload_image');
         Route::delete('products/images/{imageID}/', 'ProductController@remove_image');
+
+        Route::resource('orders', 'OrderController');
+
+        Route::resource('roles', 'RoleController');
+        Route::resource('users', 'UserController');
     }
 
 

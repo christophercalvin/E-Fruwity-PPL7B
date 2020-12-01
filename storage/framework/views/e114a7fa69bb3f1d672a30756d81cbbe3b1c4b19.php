@@ -29,14 +29,15 @@
                                         <td>
                                         <a href="<?php echo e(url('admin/products/'. $product->id .'/edit')); ?>" class="btn btn-warning btn-sm">Ubah Data</a>
                                             
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete_products')): ?>
                                             <?php echo Form::open(['url' => 'admin/products/'. $product->id, 'class' => 'delete', 'style' => 'display:inline-block']); ?>
 
                                             <?php echo Form::hidden('_method', 'DELETE'); ?>
 
-                                            <?php echo Form::submit('HAPUS', ['class' => 'btn btn-danger btn-sm']); ?>
-
+                                            <!--<?php echo Form::submit('HAPUS', ['class' => 'btn btn-danger btn-sm']); ?>-->
                                             <?php echo Form::close(); ?>
 
+                                        <?php endif; ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -49,9 +50,11 @@
                         <?php echo e($data_produks->links()); ?>
 
                     </div>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('add_products')): ?>
                     <div class="card-footer text right">
                         <a href="<?php echo e(url('admin/products/create')); ?>" class="btn btn-primary">Tambah Barang Baru</a>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

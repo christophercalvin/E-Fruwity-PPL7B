@@ -47,7 +47,7 @@
                     </table>
                 </div>
                 <div class="card-footer text-right">
-                    <a href="<?php echo e(url('admin/products/'.$productID.'/add-image')); ?>" class="btn btn-primary">Add New</a>
+                    <a href="<?php echo e(url('admin/products/'.$productID.'/add-image')); ?>" class="btn btn-primary">Tambah Foto</a>
                 </div>
             </div>  
         </div>

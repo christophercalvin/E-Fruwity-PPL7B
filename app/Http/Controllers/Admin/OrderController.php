@@ -11,8 +11,13 @@ use App\Models\Shipment;
 use App\Helpers\General;
 use App\Models\DataProduk;
 
+use App\Authorizable;
+use Session;
+use DB;
+
 class OrderController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *

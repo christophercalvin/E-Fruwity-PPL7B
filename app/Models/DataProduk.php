@@ -23,6 +23,25 @@ class DataProduk extends Model
         return $this->hasMany('App\Models\ProductImage');
     }
 
+    public function scopeActive($query)
+    {
+        return $query
+            ->orderBy('created_at', 'DESC');
+    }
 
+    function harga()
+    {
+        return $this->HargaProduk;
+    }
+
+    public function configurable()
+    {
+        return $this->type=='configurable';
+    }
+
+    public function simple()
+    {
+        return $this->type=='simple';
+    }
 
 }
