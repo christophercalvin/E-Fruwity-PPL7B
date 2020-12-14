@@ -28,7 +28,7 @@
 									@csrf
 									<div class="form-group row">
 										<div class="col-md-6">
-											{!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'First name', 'required' => true]) !!}
+											{!! Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Username', 'required' => true]) !!}
 											@error('first_name')
 												<span class="invalid-feedback" role="alert">
 													<strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
 											@enderror
 										</div>
 										<div class="col-md-6">
-											{!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last name', 'required' => true]) !!}
+											{!! Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Nama Lengkap', 'required' => true]) !!}
 											@error('last_name')
 												<span class="invalid-feedback" role="alert">
 													<strong>{{ $message }}</strong>
@@ -47,18 +47,7 @@
 
 									<div class="form-group row">
 										<div class="col-md-6">
-											{!! Form::text('company', null, ['placeholder' => 'Company']) !!}
-											@error('company')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<div class="col-md-6">
-											{!! Form::text('address1', null, ['required' => true, 'placeholder' => 'Home number and street name']) !!}
+											{!! Form::text('address1', null, ['required' => true, 'placeholder' => 'Alamat']) !!}
 											@error('address1')
 												<span class="invalid-feedback" role="alert">
 													<strong>{{ $message }}</strong>
@@ -68,44 +57,6 @@
 									</div>
 
 									<div class="form-group row">
-										<div class="col-md-6">
-											{!! Form::text('address2', null, ['placeholder' => 'Apartment, suite, unit etc. (optional)']) !!}
-											@error('address2')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<div class="col-md-6">
-											{!! Form::select('province_id', $provinces, Auth::user()->province_id, ['id' => 'user-province-id', 'placeholder' => '- Please Select - ', 'required' => true]) !!}
-											@error('province_id')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-										<div class="col-md-6">
-											{!! Form::select('city_id', $cities, null, ['id' => 'user-city-id', 'placeholder' => '- Please Select -', 'required' => true])!!}
-											@error('city_id')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
-									</div>
-
-									<div class="form-group row">
-										<div class="col-md-6">
-											{!! Form::number('postcode', null, ['required' => true, 'placeholder' => 'Postcode']) !!}
-											@error('postcode')
-												<span class="invalid-feedback" role="alert">
-													<strong>{{ $message }}</strong>
-												</span>
-											@enderror
-										</div>
 										<div class="col-md-6">
 											{!! Form::text('phone', null, ['required' => true, 'placeholder' => 'Phone']) !!}
 											@error('phone')
@@ -127,7 +78,7 @@
 										</div>
 									</div>
 									<div class="button-box">
-										<button type="submit" class="default-btn floatright">Update Profile</button>
+										<button type="submit" class="default-btn floatright">Simpan</button>
                                         <br>
                                         <br>
                                         <br>

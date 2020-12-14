@@ -89,7 +89,7 @@
                           
                             <li >
                               <a class="sidenav-item-link" href="{{url('admin/orders')}}">
-                                <span class="nav-text">Data Order Pelanggan</span>
+                                <span class="nav-text">Belum Bayar</span>
                                 
                               </a>
                             </li>
@@ -100,8 +100,8 @@
                         
                           
                             <li >
-                              <a class="sidenav-item-link" href="contacts.html">
-                                <span class="nav-text">Contacts</span>
+                              <a class="sidenav-item-link" href="{{url('admin/processing')}}">
+                                <span class="nav-text">Sudah Bayar</span>
                                 
                               </a>
                             </li>

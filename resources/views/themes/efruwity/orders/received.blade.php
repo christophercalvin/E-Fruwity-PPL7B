@@ -109,7 +109,9 @@
                         </div>
                         <hr> </div>
                 </div>
-                <div class="col-12 d-flex shopping-box"><a href="{{url('orders/payment') }}" class="ml-auto btn hvr-hover">Lanjut Ke Pembayaran</a> </div>
+                @if(!$order->isPaid())
+                    <div class="col-12 d-flex shopping-box"><a href="{{ $order->payment_url }}" class="ml-auto btn hvr-hover">Lanjut Ke Pembayaran</a> </div>
+                @endif
             </div>
         </div>
     </div>

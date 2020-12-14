@@ -22,7 +22,9 @@ class OrderController extends Controller
         parent::__construct();
 
         $this->middleware('auth');
-    }
+	}
+	
+
 
     public function checkout()
     {
@@ -268,6 +270,7 @@ class OrderController extends Controller
 			];
 
 			$order = Order::create($orderParams);
+			$this->_generatePaymentToken($order);
 			$cartItems = \Cart::getContent();
 
 			if ($order && $cartItems) {
@@ -350,13 +353,56 @@ class OrderController extends Controller
 
 	return redirect('orders/checkout');
 }
+
+	private function _sendEmailOrderReceived($order)
+	{
+		$pesan = new \App\Mail\OrderReceived($order);
+		\Mail::to(\Auth::user()->email)->send($pesan);
+	}
+
 	public function received($orderId)
 	{
 		$this->data['order'] = Order::where('id', $orderId)
 			->where('user_id', \Auth::user()->id)
 			->firstOrFail();
 
+		// $this->_sendEmailOrderReceived($this->data['order']);
+
 		return $this->load_theme('orders/received', $this->data);
+	}
+
+	private function _generatePaymentToken($order)
+	{
+		$this->initPaymentGateway();
+
+		$customerDetails = [
+			'first_name' => $order->customer_first_name,
+			'last_name' => $order->customer_last_name,
+			'email' => $order->customer_email,
+			'phone' => $order->customer_phone,
+		];
+
+		$params = [
+			'enable_payments' => \App\Models\Payment::PAYMENT_CHANNELS,
+			'transaction_details' => [
+				'order_id' => $order->code,
+				'gross_amount' => $order->grand_total,
+			],
+			'customer_details' => $customerDetails,
+			'expiry' => [
+				'start_time' => date('Y-m-d H:i:s T'),
+				'unit' => \App\Models\Payment::EXPIRY_UNIT,
+				'duration' => \App\Models\Payment::EXPIRY_DURATION,
+			],
+		];
+
+		$snap = \Midtrans\Snap::createTransaction($params);
+		
+		if ($snap->token) {
+			$order->payment_token = $snap->token;
+			$order->payment_url = $snap->redirect_url;
+			$order->save();
+		}
 	}
 
 

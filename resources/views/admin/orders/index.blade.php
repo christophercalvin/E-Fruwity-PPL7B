@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class= "card-header card-header-border-botton">
-                        <h1>Data Order</h1>
+                        <h1>Data Order Status: UNPAID</h1>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-stripped">
@@ -27,7 +27,7 @@
                                         <td>{{ $data->shipping_service_name }}</td>
                                         <td>Rp. {{ ($data->grand_total) }} </td>
                                         <td>
-                                        <a href="{{ url('admin/orders/'. $data->id .'/edit') }}" class="btn btn-warning btn-sm">Lihat Rincian</a>
+                                        <a href="{{ url('admin/orders/'. $data->id) }}" class="btn btn-warning btn-sm">Lihat Rincian</a>
                                             
                                             {!! Form::open(['url' => 'admin/orders/'. $data->id, 'class' => 'delete', 'style' => 'display:inline-block']) !!}
                                             {!! Form::hidden('_method', 'DELETE') !!}

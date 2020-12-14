@@ -32,6 +32,12 @@ Route::get('orders/cities', 'OrderController@cities');
 Route::get('profile', 'Auth\ProfileController@index');
 Route::post('profile', 'Auth\ProfileController@update');
 
+Route::post('payments/notification', 'PaymentController@notification');
+Route::get('payments/completed', 'PaymentController@completed');
+Route::get('payments/failed', 'PaymentController@failed');
+Route::get('payments/unfinish', 'PaymentController@unfinish');
+
+
 Route::group(
     ["namespace" => 'Admin', 'prefix' => 'admin', 'middleware'=>['auth']],
     function(){
@@ -43,9 +49,12 @@ Route::group(
         Route::delete('products/images/{imageID}/', 'ProductController@remove_image');
 
         Route::resource('orders', 'OrderController');
+        Route::get('processing', 'OrderController@sudahbayar');
 
         Route::resource('roles', 'RoleController');
         Route::resource('users', 'UserController');
+
+        Route::get('shipments', 'ShipmentController@index');
     }
 
 

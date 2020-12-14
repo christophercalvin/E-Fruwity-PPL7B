@@ -49,7 +49,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                {!! Form::open(['url' => 'keranjang/update']) !!}
                     <div class="table-main table-responsive">
                         <table class="table">
                             <thead>
@@ -117,8 +116,16 @@
                         </div>
                         <div class="form-footer pt-5 border-top">
                             <a href="{{ url('admin/orders') }}" class="btn btn-secondary btn-default">Kembali</a>
-                            <!-- <button type="submit" class="btn btn-danger btn-default">Batalkan Pesanan</button> -->
-                        </div>
+    
+
+					<!-- @if (!in_array($order->status, [\App\Models\Order::DELIVERED, \App\Models\Order::COMPLETED]))
+						<a href="{{ url('admin/orders/'. $order->id .'/edit') }}"class="btn btn-block mt-2 btn-lg btn-secondary btn-pill delete" order-id="{{ $order->id }}"> Remove</a>
+
+						{!! Form::open(['url' => 'admin/orders/'. $order->id, 'class' => 'delete', 'id' => 'delete-form-'. $order->id, 'style' => 'display:none']) !!}
+						{!! Form::hidden('_method', 'DELETE') !!}
+						{!! Form::close() !!}
+					@endif -->
+                </div>
             </div>
         </div>
     </div>
